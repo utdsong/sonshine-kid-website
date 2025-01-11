@@ -48,7 +48,7 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <Image
-                  src="https://i.ibb.co/gWf4myn/image6.jpg"
+                  src="/images/logo.jpg"
                   alt="School building"
                   width={500}
                   height={300}

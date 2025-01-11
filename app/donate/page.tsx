@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { DonationCalculator } from "@/components/donation-calculator"
-import { EnquiryForm } from "@/components/enquiry-form"
+import { DonationEnquiryForm } from '@/components/donation-enquiry-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 
@@ -93,7 +93,7 @@ export default function DonatePage() {
                 please fill out our enquiry form and we&apos;ll provide alternative donation options
               </p>
             </div>
-            <EnquiryForm />
+            <DonationEnquiryForm />
           </div>
         </div>
       </section>
