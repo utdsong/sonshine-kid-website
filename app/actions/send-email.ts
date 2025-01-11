@@ -5,15 +5,22 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContactEmail(formData: FormData) {
-  const name = formData.get('name') as string
-  const email = formData.get('email') as string
-  const subject = formData.get('subject') as string
-  const message = formData.get('message') as string
+  console.log('Starting email send process...');
+  
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const subject = formData.get('subject') as string;
+  const message = formData.get('message') as string;
+
+  console.log('Form data received:', { name, email, subject, message });
+  console.log('Using Resend API Key:', process.env.RESEND_API_KEY?.substring(0, 8) + '...');
 
   try {
-    await resend.emails.send({
+    console.log('Attempting to send email...');
+    const data = await resend.emails.send({
       from: 'SonShine Kids Cambodia <onboarding@resend.dev>',
-      to: 'sonshinekidcambodia@gmail.com',
+      to: ['sonshinekidcambodia@gmail.com'],  // Note: wrapped in array
+      reply_to: email, // Add this so you can reply directly to the sender
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -24,10 +31,12 @@ export async function sendContactEmail(formData: FormData) {
         <p>${message}</p>
       `,
     });
-
-    return { success: true };
+    
+    console.log('Email sent successfully:', data);
+    return { success: true, data };
   } catch (error) {
-    return { success: false, error: 'Failed to send email' };
+    console.error('Failed to send email:', error);
+    return { success: false, error: JSON.stringify(error) };
   }
 }
 

@@ -3,6 +3,7 @@ import { DonationCalculator } from "@/components/donation-calculator"
 import { DonationEnquiryForm } from '@/components/donation-enquiry-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function DonatePage() {
   return (
@@ -75,6 +76,16 @@ export default function DonatePage() {
                 Choose your sponsorship duration and the number of students you wish to support
               </p>
             </div>
+            <Select>
+              <SelectTrigger className="w-full bg-white">
+                <SelectValue placeholder="Select number of students" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border shadow-lg">
+                <SelectItem value="1">1 Student</SelectItem>
+                <SelectItem value="2">2 Students</SelectItem>
+                <SelectItem value="3">3 Students</SelectItem>
+              </SelectContent>
+            </Select>
             <DonationCalculator />
           </div>
         </div>

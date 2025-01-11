@@ -8,17 +8,34 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { Send } from 'lucide-react'
+import { sendContactEmail } from "@/app/actions/send-email"
 
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    // Add form submission logic here
-    setTimeout(() => {
-      setIsSubmitting(false)
-    }, 1000)
+  async function handleSubmit(formData: FormData) {
+    setStatus('loading')
+    setErrorMessage('')
+    
+    try {
+      const result = await sendContactEmail(formData)
+      console.log('Form submission result:', result)
+      
+      if (result.success) {
+        setStatus('success')
+        // Reset form
+        const form = document.getElementById('contactForm') as HTMLFormElement
+        form.reset()
+      } else {
+        setStatus('error')
+        setErrorMessage(result.error || 'Failed to send message')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setStatus('error')
+      setErrorMessage('An unexpected error occurred')
+    }
   }
 
   return (
@@ -30,7 +47,7 @@ export function ContactForm() {
     >
       <Card className="w-full">
         <CardContent className="pt-6">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form id="contactForm" action={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -72,13 +89,21 @@ export function ContactForm() {
               />
             </div>
             <Button 
-              type="submit" 
-              className="w-full bg-[#1a7fa8] hover:bg-[#1a7fa8]/90"
-              disabled={isSubmitting}
+              type="submit"
+              className="w-full"
+              disabled={status === 'loading'}
             >
-              <Send className="w-4 h-4 mr-2" />
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {status === 'loading' ? 'Sending...' : 'Send Message'}
             </Button>
+
+            {status === 'success' && (
+              <p className="text-green-600 text-center">Message sent successfully!</p>
+            )}
+            {status === 'error' && (
+              <p className="text-red-600 text-center">
+                Failed to send message: {errorMessage}
+              </p>
+            )}
           </form>
         </CardContent>
       </Card>
