@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
 
 const MONTHLY_FEE = 110 // USD per month per student
 const durations = [
@@ -28,7 +29,7 @@ export function DonationCalculator() {
   }
 
   return (
-    <Card className="w-full">
+    <Card className="w-full mt-6">
       <CardContent className="pt-6">
         <div className="space-y-6">
           <div className="space-y-4">
@@ -41,9 +42,11 @@ export function DonationCalculator() {
               {durations.map((option) => (
                 <Label
                   key={option.value}
-                  className={`flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary ${
+                  className={cn(
+                    "flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4",
+                    "hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary",
                     duration === option.value ? "border-[#1a7fa8]" : ""
-                  }`}
+                  )}
                 >
                   <RadioGroupItem value={option.value} className="sr-only" />
                   <span className="text-lg font-semibold">{option.label}</span>
@@ -58,12 +61,16 @@ export function DonationCalculator() {
           <div className="space-y-4">
             <Label>Number of Students</Label>
             <Select value={students} onValueChange={setStudents}>
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full bg-white">
                 <SelectValue placeholder="Select number of students" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white border shadow-lg z-50">
                 {[1, 2, 3, 4, 5].map((num) => (
-                  <SelectItem key={num} value={num.toString()}>
+                  <SelectItem 
+                    key={num} 
+                    value={num.toString()}
+                    className="hover:bg-gray-100"
+                  >
                     {num} Student{num > 1 ? "s" : ""}
                   </SelectItem>
                 ))}
@@ -94,7 +101,10 @@ export function DonationCalculator() {
           </div>
 
           <Button 
-            className="w-full bg-[#1a7fa8] hover:bg-[#1a7fa8]/90"
+            className={cn(
+              "w-full bg-[#1a7fa8] hover:opacity-90",
+              "text-white font-medium py-3"
+            )}
             onClick={() => setShowQR(true)}
           >
             Proceed to Payment

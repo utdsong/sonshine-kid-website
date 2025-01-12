@@ -4,27 +4,17 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-type EmailResponse = {
-  success: boolean;
-  data?: any;
-  error?: string;
-}
+export async function sendContactEmail(formData: FormData) {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const subject = formData.get('subject') as string;
+  const message = formData.get('message') as string;
 
-export async function sendContactEmail(formData: FormData): Promise<EmailResponse> {
   try {
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-
-    if (!name || !email || !subject || !message) {
-      throw new Error('Missing required fields');
-    }
-
     const data = await resend.emails.send({
       from: 'SonShine Kids Cambodia <onboarding@resend.dev>',
       to: ['sonshinekidcambodia@gmail.com'],
-      replyTo: email as string,
+      replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -39,19 +29,16 @@ export async function sendContactEmail(formData: FormData): Promise<EmailRespons
     return { success: true, data };
   } catch (error) {
     console.error('Failed to send email:', error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Failed to send email'
-    };
+    return { success: false, error: JSON.stringify(error) };
   }
 }
 
-export async function sendDonationEnquiry(formData: FormData): Promise<EmailResponse> {
-  const name = formData.get('fullName') as string
-  const email = formData.get('email') as string
-  const country = formData.get('country') as string
-  const amount = formData.get('amount') as string
-  const additionalInfo = formData.get('additionalInfo') as string
+export async function sendDonationEnquiry(formData: FormData) {
+  const name = formData.get('fullName') as string;
+  const email = formData.get('email') as string;
+  const country = formData.get('country') as string;
+  const amount = formData.get('amount') as string;
+  const additionalInfo = formData.get('additionalInfo') as string;
 
   try {
     await resend.emails.send({
@@ -72,7 +59,6 @@ export async function sendDonationEnquiry(formData: FormData): Promise<EmailResp
 
     return { success: true };
   } catch (error) {
-    console.error('Failed to send donation enquiry:', error);
-    return { success: false, error: JSON.stringify(error) };
+    return { success: false, error: 'Failed to send email' };
   }
 } 
