@@ -6,15 +6,15 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const images = [
   {
-    src: "/images/hero/hero1.avif",
+    src: "/images/hero/hero1.jpg",
     alt: "Students in graduation ceremony"
   },
   {
-    src: "/images/hero/hero2.avif",
+    src: "/images/hero/hero2.jpg",
     alt: "Students performance"
   },
   {
-    src: "/images/hero/hero3.avif",
+    src: "/images/hero/hero3.jpg",
     alt: "Students cultural celebration"
   }
 ]

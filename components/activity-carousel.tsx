@@ -8,27 +8,27 @@ import { Button } from "@/components/ui/button"
 
 const images = [
   {
-    src: "/images/activities/act.avif",
+    src: "/images/activities/act.jpg",
     alt: "Students studying with globe"
   },
   {
-    src: "/images/activities/act2.avif",
+    src: "/images/activities/act2.jpg",
     alt: "Creative craft activities"
   },
   {
-    src: "/images/activities/act3.avif",
+    src: "/images/activities/act3.jpg",
     alt: "Reading session"
   },
   {
-    src: "/images/activities/act4.avif",
+    src: "/images/activities/act4.jpg",
     alt: "Music room activities"
   },
   {
-    src: "/images/activities/act5.avif",
+    src: "/images/activities/act5.jpg",
     alt: "Valentine's Day celebration"
   },
   {
-    src: "/images/activities/act6.avif",
+    src: "/images/activities/act6.jpg",
     alt: "Outdoor learning activities"
   }
 ]
