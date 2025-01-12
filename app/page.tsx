@@ -13,7 +13,7 @@ import { ActivityCarousel } from "@/components/activity-carousel"
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - full width */}
       <section className="relative h-[80vh] overflow-hidden">
         <HeroCarousel />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -42,7 +42,7 @@ export default function HomePage() {
 
       {/* About Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function HomePage() {
 
       {/* Programs Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-12 text-center text-[#1a7fa8]">
             Our Programs
           </h2>
@@ -71,7 +71,7 @@ export default function HomePage() {
 
       {/* Location Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-center text-[#1a7fa8]">
               Find Us
@@ -83,7 +83,7 @@ export default function HomePage() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gray-50">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-[#1a7fa8]">Contact Us</h2>
             <ContactForm />
