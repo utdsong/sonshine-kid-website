@@ -4,23 +4,27 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendContactEmail(formData: FormData) {
-  console.log('Starting email send process...');
-  
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const subject = formData.get('subject') as string;
-  const message = formData.get('message') as string;
+type EmailResponse = {
+  success: boolean;
+  data?: any;
+  error?: string;
+}
 
-  console.log('Form data received:', { name, email, subject, message });
-  console.log('Using Resend API Key:', process.env.RESEND_API_KEY?.substring(0, 8) + '...');
-
+export async function sendContactEmail(formData: FormData): Promise<EmailResponse> {
   try {
-    console.log('Attempting to send email...');
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    if (!name || !email || !subject || !message) {
+      throw new Error('Missing required fields');
+    }
+
     const data = await resend.emails.send({
       from: 'SonShine Kids Cambodia <onboarding@resend.dev>',
-      to: ['sonshinekidcambodia@gmail.com'],  // Note: wrapped in array
-      replyTo: email, // Add this so you can reply directly to the sender
+      to: ['sonshinekidcambodia@gmail.com'],
+      replyTo: email as string,
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -32,15 +36,17 @@ export async function sendContactEmail(formData: FormData) {
       `,
     });
     
-    console.log('Email sent successfully:', data);
     return { success: true, data };
   } catch (error) {
     console.error('Failed to send email:', error);
-    return { success: false, error: JSON.stringify(error) };
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : 'Failed to send email'
+    };
   }
 }
 
-export async function sendDonationEnquiry(formData: FormData) {
+export async function sendDonationEnquiry(formData: FormData): Promise<EmailResponse> {
   const name = formData.get('fullName') as string
   const email = formData.get('email') as string
   const country = formData.get('country') as string
@@ -50,7 +56,8 @@ export async function sendDonationEnquiry(formData: FormData) {
   try {
     await resend.emails.send({
       from: 'SonShine Kids Cambodia <onboarding@resend.dev>',
-      to: 'sonshinekidcambodia@gmail.com',
+      to: ['sonshinekidcambodia@gmail.com'],
+      replyTo: email,
       subject: 'New International Donation Enquiry',
       html: `
         <h2>New International Donation Enquiry</h2>
@@ -59,12 +66,13 @@ export async function sendDonationEnquiry(formData: FormData) {
         <p><strong>Country:</strong> ${country}</p>
         <p><strong>Intended Donation Amount:</strong> $${amount} USD</p>
         <p><strong>Additional Information:</strong></p>
-        <p>${additionalInfo}</p>
+        <p>${additionalInfo || 'None provided'}</p>
       `,
     });
 
     return { success: true };
   } catch (error) {
-    return { success: false, error: 'Failed to send email' };
+    console.error('Failed to send donation enquiry:', error);
+    return { success: false, error: JSON.stringify(error) };
   }
 } 
