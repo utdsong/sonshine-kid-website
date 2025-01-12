@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export default function DonatePage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - full width */}
       <section className="relative h-[40vh] bg-[#1a7fa8]">
         <div className="absolute inset-0 flex items-center justify-center text-white">
           <div className="text-center space-y-4 px-4">
