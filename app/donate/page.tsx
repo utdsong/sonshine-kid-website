@@ -22,7 +22,7 @@ export default function DonatePage() {
 
       {/* Scholarship Program Info */}
       <section className="py-16 bg-gray-50">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold text-[#1a7fa8]">Our Scholarship Program</h2>
             <p className="text-lg text-gray-700">
@@ -30,33 +30,33 @@ export default function DonatePage() {
               Our scholarship program aims to provide underprivileged children with the opportunity to 
               receive bilingual education, opening doors to a brighter future.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#1a7fa8]">Education</CardTitle>
+                  <CardTitle className="text-[#1a7fa8] text-center">Education</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-center">
                     Full access to our bilingual curriculum, learning materials, and educational activities
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#1a7fa8]">Support</CardTitle>
+                  <CardTitle className="text-[#1a7fa8] text-center">Support</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-center">
                     Individual attention from qualified teachers and regular progress assessments
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#1a7fa8]">Community</CardTitle>
+                  <CardTitle className="text-[#1a7fa8] text-center">Community</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-center">
                     Integration into our diverse learning community and participation in cultural activities
                   </p>
                 </CardContent>
@@ -68,7 +68,7 @@ export default function DonatePage() {
 
       {/* Donation Calculator */}
       <section className="py-16">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-[#1a7fa8] mb-4">Sponsor a Child&apos;s Education</h2>
@@ -95,7 +95,7 @@ export default function DonatePage() {
 
       {/* International Donors */}
       <section className="py-16 bg-gray-50">
-        <div className="container px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-[#1a7fa8] mb-4">International Donors</h2>
