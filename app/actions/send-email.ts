@@ -20,7 +20,7 @@ export async function sendContactEmail(formData: FormData) {
     const data = await resend.emails.send({
       from: 'SonShine Kids Cambodia <onboarding@resend.dev>',
       to: ['sonshinekidcambodia@gmail.com'],  // Note: wrapped in array
-      reply_to: email, // Add this so you can reply directly to the sender
+      replyTo: email, // Add this so you can reply directly to the sender
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
