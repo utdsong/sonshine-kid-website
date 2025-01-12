@@ -76,9 +76,6 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold mb-6 text-center text-[#1a7fa8]">
               Find Us
             </h2>
-            <p className="text-center text-gray-600 mb-8">
-              House 63, Street 160, Teuk Laak 2, Khan Toul Kork, Phnom Penh, Cambodia
-            </p>
             <LocationMap />
           </div>
         </div>
