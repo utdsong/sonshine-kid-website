@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   keywords: ["preschool", "kindergarten", "bilingual education", "Cambodia", "Phnom Penh", "education"],
   authors: [{ name: "SonShine Kids Cambodia" }],
   creator: "SonShine Kids Cambodia",
-  metadataBase: new URL('https://sonshinekids.com'),
+  metadataBase: new URL('https://sonshinecambodia.com'),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://sonshinekids.com",
+    url: "https://sonshinecambodia.com",
     title: "SonShine Kids Cambodia - Bilingual Pre-School",
     description: "A nurturing bilingual kindergarten offering education in both Khmer and English in Phnom Penh, Cambodia",
     siteName: "SonShine Kids Cambodia",
@@ -33,6 +33,12 @@ export const metadata: Metadata = {
         alt: "SonShine Kids Cambodia"
       }
     ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SonShine Kids Cambodia - Bilingual Pre-School',
+    description: 'A nurturing bilingual kindergarten offering education in both Khmer and English',
+    images: ['/images/hero/hero1.jpg'],
   }
 }
 
