@@ -43,11 +43,6 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link href="/donate" className="text-sm hover:text-[#e1df32] transition-colors">
-                  Donate
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -56,18 +51,18 @@ export function Footer() {
             <h3 className="font-bold mb-4">Contact Us</h3>
             <div className="space-y-2">
               <a 
-                href="tel:+85512345678" 
+                href="tel:+855-93-476-565" 
                 className="flex items-center space-x-2 text-sm hover:text-[#e1df32] transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                <span>+855 12 345 678</span>
+                <span>+855-93-476-565</span>
               </a>
               <a 
-                href="mailto:info@sonshinekids.com" 
+                href="mailto:sonshinekidcambodia@gmail.com" 
                 className="flex items-center space-x-2 text-sm hover:text-[#e1df32] transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                <span>info@sonshinekids.com</span>
+                <span>sonshinekidcambodia@gmail.com</span>
               </a>
               <a 
                 href="https://www.facebook.com/p/Sonshine-Kids-Cambodia-100092845294006" 

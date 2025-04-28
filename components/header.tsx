@@ -95,12 +95,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Button
+          {/* <Button
             asChild
             className="bg-[#ff6c9e] hover:bg-[#ff6c9e]/90"
           >
             <Link href="/donate">Donate</Link>
-          </Button>
+          </Button> */}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -141,12 +141,12 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <Button
+                {/* <Button
                   asChild
                   className="bg-[#ff6c9e] hover:bg-[#ff6c9e]/90 w-full max-w-xs"
                 >
                   <Link href="/donate">Donate</Link>
-                </Button>
+                </Button> */}
               </nav>
             </motion.div>
           )}

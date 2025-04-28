@@ -10,6 +10,15 @@ import { LocationMap } from "@/components/location-map"
 import { ContactForm } from "@/components/contact-form"
 import { ActivityCarousel } from "@/components/activity-carousel"
 
+// Base container component
+const Container = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="container mx-auto border-2 border-black p-4 my-4 rounded">
+      {children}
+    </div>
+  );
+};
+
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
