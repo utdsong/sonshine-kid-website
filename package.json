@@ -56,22 +56,22 @@
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
-    "resend": "^4.0.1",
+    "resend": "^4.4.1",
     "sharp": "^0.33.5",
     "sonner": "latest",
     "tailwind-merge": "^2.5.5",
     "vaul": "^0.9.6",
-    "zod": "^3.24.1"
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.x",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "terser-webpack-plugin": "^5.3.11",
-    "typescript": "^5",
-    "autoprefixer": "^10.x"
+    "typescript": "^5"
   }
 }
